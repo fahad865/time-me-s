@@ -8,8 +8,9 @@ import bluebird from "bluebird";
 import socketio from "socket.io";
 import http from "http";
 
+const env = process.env.NODE_ENV;
 // Load environment variables from .env file
-dotenv.config({ path: ".env.default" });
+dotenv.config({ path: `.env.${env == "production" ? "prod" : "default"}` });
 
 // Controllers (route handlers)
 import * as timeLogController from "./controllers/timeLog";
