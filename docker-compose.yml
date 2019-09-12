@@ -1,0 +1,23 @@
+version: '2.1'
+
+services:
+  time-me-s:
+    image: time-me-s
+    build: .
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3001:3001
+      - 8000:8000
+    networks: 
+      - time-me-network
+  mongodb:
+    image: mongo
+    ports: 
+      - 27017:27017
+    networks: 
+      - time-me-network
+networks:
+  time-me-network:
+    name: time-me-network
+    driver: bridge
